@@ -1,0 +1,3 @@
+org.springframework.test.context.ContextCustomizerFactory = org.forsstudio.\
+    nbatestsuit.config.SqlTestContainersSpringContextCustomizerFactory,org.\
+    forsstudio.nbatestsuit.config.TestContainersSpringContextCustomizerFactory
