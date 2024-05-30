@@ -7,8 +7,8 @@
     <artifactId>gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Gateway</name>
-    <description>Description for Gateway</description>
+    <name>suitNBA Gateway</name>
+    <description>The NBA statistic suite</description>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -50,14 +50,15 @@
         <jib-maven-plugin.image>eclipse-temurin:17-jre-focal</jib-maven-plugin.image>
         <jib-maven-plugin.version>3.4.2</jib-maven-plugin.version>
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
-        <liquibase-plugin.password/>
-        <liquibase-plugin.url/>
-        <liquibase-plugin.username/>
+        <liquibase-plugin.url>jdbc:postgresql://localhost:5432/postgres</liquibase-plugin.url>
+        <liquibase-plugin.username>postgres</liquibase-plugin.username>
+        <liquibase-plugin.password>suitNBA</liquibase-plugin.password>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
         <maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
         <maven-clean-plugin.version>3.3.2</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
         <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
         <maven-failsafe-plugin.version>3.2.5</maven-failsafe-plugin.version>
         <maven-jar-plugin.version>3.4.1</maven-jar-plugin.version>
@@ -327,6 +328,10 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
             </plugin>
             <plugin>
@@ -369,6 +374,10 @@
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+            </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
@@ -396,7 +405,7 @@
                     <version>${spotless-maven-plugin.version}</version>
                     <configuration>
                         <java>
-                            <!-- <removeUnusedImports/> -->
+                            21
                         </java>
                     </configuration>
                     <executions>
@@ -591,6 +600,11 @@
                             </requireJavaVersion>
                         </rules>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -877,9 +891,9 @@
                 <!-- default Spring profiles -->
                 <spring.profiles.active>dev${profile.tls}${profile.no-liquibase}</spring.profiles.active>
                 <profile.test>testdev</profile.test>
-                <liquibase-plugin.url>jdbc:postgresql://localhost:5432/gateway</liquibase-plugin.url>
-                <liquibase-plugin.username>gateway</liquibase-plugin.username>
-                <liquibase-plugin.password/>
+                <liquibase-plugin.url>jdbc:postgresql://localhost:5432/postgres</liquibase-plugin.url>
+                <liquibase-plugin.username>postgres</liquibase-plugin.username>
+                <liquibase-plugin.password>suitNBA</liquibase-plugin.password>
             </properties>
             <dependencies>
                 <dependency>
@@ -1019,9 +1033,9 @@
                 <!-- default Spring profiles -->
                 <spring.profiles.active>prod${profile.api-docs}${profile.tls}${profile.e2e}${profile.no-liquibase}</spring.profiles.active>
                 <profile.test>testprod</profile.test>
-                <liquibase-plugin.url>jdbc:postgresql://localhost:5432/gateway</liquibase-plugin.url>
-                <liquibase-plugin.username>gateway</liquibase-plugin.username>
-                <liquibase-plugin.password/>
+                <liquibase-plugin.url>jdbc:postgresql://localhost:5432/postgres</liquibase-plugin.url>
+                <liquibase-plugin.username>postgres</liquibase-plugin.username>
+                <liquibase-plugin.password>suitNBA</liquibase-plugin.password>
             </properties>
             <build>
                 <plugins>

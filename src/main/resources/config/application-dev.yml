@@ -23,7 +23,7 @@ logging:
 management:
   health:
     elasticsearch:
-      enabled: false
+      enabled: true
 
 spring:
   devtools:
@@ -39,8 +39,8 @@ spring:
     uris: http://localhost:9200
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
-    contexts: dev, faker
-    url: jdbc:postgresql://localhost:5432/gateway
+    contexts: dev
+    url: jdbc:postgresql://localhost:5432/postgres
   mail:
     host: localhost
     port: 25
@@ -49,9 +49,9 @@ spring:
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/gateway
-    username: gateway
-    password:
+    url: r2dbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: suitNBA
   thymeleaf:
     cache: false
 
