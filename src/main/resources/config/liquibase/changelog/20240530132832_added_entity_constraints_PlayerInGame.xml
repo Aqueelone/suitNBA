@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity PlayerInGame.
+    -->
+    <changeSet id="20240530132832-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="team_id"
+                                 baseTableName="player_in_game"
+                                 constraintName="fk_player_in_game__team_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="team_in_game"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="player_id"
+                                 baseTableName="player_in_game"
+                                 constraintName="fk_player_in_game__player_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="player"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="game_id"
+                                 baseTableName="player_in_game"
+                                 constraintName="fk_player_in_game__game_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="game"
+                                 />
+    </changeSet>
+</databaseChangeLog>

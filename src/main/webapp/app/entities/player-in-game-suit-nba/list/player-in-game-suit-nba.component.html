@@ -1,0 +1,215 @@
+<div>
+  <h2 id="page-heading" data-cy="PlayerInGameHeading">
+    <span>Player In Games</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-player-in-game-suit-nba"
+        [routerLink]="['/player-in-game-suit-nba/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down">Create a new Player In Game</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch">Search for Player In Game</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="Search for Player In Game"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        @if (currentSearch) {
+          <button class="btn btn-danger" (click)="search('')">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </form>
+
+  @if (playerInGames?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span>No Player In Games found</span>
+    </div>
+  }
+
+  @if (playerInGames && playerInGames.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span>ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="points">
+              <div class="d-flex">
+                <span>Points</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="rebounds">
+              <div class="d-flex">
+                <span>Rebounds</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="assists">
+              <div class="d-flex">
+                <span>Assists</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="steals">
+              <div class="d-flex">
+                <span>Steals</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="blocks">
+              <div class="d-flex">
+                <span>Blocks</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fouls">
+              <div class="d-flex">
+                <span>Fouls</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="turnovers">
+              <div class="d-flex">
+                <span>Turnovers</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="played">
+              <div class="d-flex">
+                <span>Played</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="team.id">
+              <div class="d-flex">
+                <span>Team</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="player.id">
+              <div class="d-flex">
+                <span>Player</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="game.id">
+              <div class="d-flex">
+                <span>Game</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody infinite-scroll (scrolled)="loadNextPage()" [infiniteScrollDisabled]="!hasMorePage()" [infiniteScrollDistance]="0">
+          @for (playerInGame of playerInGames; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/player-in-game-suit-nba', playerInGame.id, 'view']">{{ playerInGame.id }}</a>
+              </td>
+              <td>{{ playerInGame.points }}</td>
+              <td>{{ playerInGame.rebounds }}</td>
+              <td>{{ playerInGame.assists }}</td>
+              <td>{{ playerInGame.steals }}</td>
+              <td>{{ playerInGame.blocks }}</td>
+              <td>{{ playerInGame.fouls }}</td>
+              <td>{{ playerInGame.turnovers }}</td>
+              <td>{{ playerInGame.played }}</td>
+              <td>
+                @if (playerInGame.team) {
+                  <div>
+                    <a [routerLink]="['/team-in-game-suit-nba', playerInGame.team.id, 'view']">{{ playerInGame.team.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (playerInGame.player) {
+                  <div>
+                    <a [routerLink]="['/player-suit-nba', playerInGame.player.id, 'view']">{{ playerInGame.player.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (playerInGame.game) {
+                  <div>
+                    <a [routerLink]="['/game-suit-nba', playerInGame.game.id, 'view']">{{ playerInGame.game.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/player-in-game-suit-nba', playerInGame.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/player-in-game-suit-nba', playerInGame.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(playerInGame)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

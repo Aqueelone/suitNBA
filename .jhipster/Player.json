@@ -1,0 +1,26 @@
+{
+  "angularJSSuffix": "suitNBA",
+  "annotations": {
+    "changelogDate": "20240530132831"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Player",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "playerInGame",
+      "otherEntityRelationshipName": "player",
+      "relationshipName": "playerInGame",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

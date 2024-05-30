@@ -1,0 +1,118 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-player-in-game-suit-nba-heading" data-cy="PlayerInGameCreateUpdateHeading">Create or edit a Player In Game</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_points">Points</label>
+          <input type="number" class="form-control" name="points" id="field_points" data-cy="points" formControlName="points" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_rebounds">Rebounds</label>
+          <input type="number" class="form-control" name="rebounds" id="field_rebounds" data-cy="rebounds" formControlName="rebounds" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_assists">Assists</label>
+          <input type="number" class="form-control" name="assists" id="field_assists" data-cy="assists" formControlName="assists" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_steals">Steals</label>
+          <input type="number" class="form-control" name="steals" id="field_steals" data-cy="steals" formControlName="steals" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_blocks">Blocks</label>
+          <input type="number" class="form-control" name="blocks" id="field_blocks" data-cy="blocks" formControlName="blocks" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fouls">Fouls</label>
+          <input type="number" class="form-control" name="fouls" id="field_fouls" data-cy="fouls" formControlName="fouls" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_turnovers">Turnovers</label>
+          <input type="number" class="form-control" name="turnovers" id="field_turnovers" data-cy="turnovers" formControlName="turnovers" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_played">Played</label>
+          <input type="number" class="form-control" name="played" id="field_played" data-cy="played" formControlName="played" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_team">Team</label>
+          <select
+            class="form-control"
+            id="field_team"
+            data-cy="team"
+            name="team"
+            formControlName="team"
+            [compareWith]="compareTeamInGameSuitNba"
+          >
+            <option [ngValue]="null"></option>
+            @for (teamInGameOption of teamInGamesSharedCollection; track $index) {
+              <option [ngValue]="teamInGameOption">{{ teamInGameOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_player">Player</label>
+          <select
+            class="form-control"
+            id="field_player"
+            data-cy="player"
+            name="player"
+            formControlName="player"
+            [compareWith]="comparePlayerSuitNba"
+          >
+            <option [ngValue]="null"></option>
+            @for (playerOption of playersSharedCollection; track $index) {
+              <option [ngValue]="playerOption">{{ playerOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_game">Game</label>
+          <select class="form-control" id="field_game" data-cy="game" name="game" formControlName="game" [compareWith]="compareGameSuitNba">
+            <option [ngValue]="null"></option>
+            @for (gameOption of gamesSharedCollection; track $index) {
+              <option [ngValue]="gameOption">{{ gameOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

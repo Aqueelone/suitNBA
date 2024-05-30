@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (playerInGame()) {
+      <div>
+        <h2 data-cy="playerInGameDetailsHeading"><span>Player In Game</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ playerInGame()!.id }}</span>
+          </dd>
+          <dt><span>Points</span></dt>
+          <dd>
+            <span>{{ playerInGame()!.points }}</span>
+          </dd>
+          <dt><span>Rebounds</span></dt>
+          <dd>
+            <span>{{ playerInGame()!.rebounds }}</span>
+          </dd>
+          <dt><span>Assists</span></dt>
+          <dd>
+            <span>{{ playerInGame()!.assists }}</span>
+          </dd>
+          <dt><span>Steals</span></dt>
+          <dd>
+            <span>{{ playerInGame()!.steals }}</span>
+          </dd>
+          <dt><span>Blocks</span></dt>
+          <dd>
+            <span>{{ playerInGame()!.blocks }}</span>
+          </dd>
+          <dt><span>Fouls</span></dt>
+          <dd>
+            <span>{{ playerInGame()!.fouls }}</span>
+          </dd>
+          <dt><span>Turnovers</span></dt>
+          <dd>
+            <span>{{ playerInGame()!.turnovers }}</span>
+          </dd>
+          <dt><span>Played</span></dt>
+          <dd>
+            <span>{{ playerInGame()!.played }}</span>
+          </dd>
+          <dt><span>Team</span></dt>
+          <dd>
+            @if (playerInGame()!.team) {
+              <div>
+                <a [routerLink]="['/team-in-game-suit-nba', playerInGame()!.team?.id, 'view']">{{ playerInGame()!.team?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span>Player</span></dt>
+          <dd>
+            @if (playerInGame()!.player) {
+              <div>
+                <a [routerLink]="['/player-suit-nba', playerInGame()!.player?.id, 'view']">{{ playerInGame()!.player?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span>Game</span></dt>
+          <dd>
+            @if (playerInGame()!.game) {
+              <div>
+                <a [routerLink]="['/game-suit-nba', playerInGame()!.game?.id, 'view']">{{ playerInGame()!.game?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/player-in-game-suit-nba', playerInGame()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

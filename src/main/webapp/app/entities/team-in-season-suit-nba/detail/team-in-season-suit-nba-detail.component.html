@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (teamInSeason()) {
+      <div>
+        <h2 data-cy="teamInSeasonDetailsHeading"><span>Team In Season</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ teamInSeason()!.id }}</span>
+          </dd>
+          <dt><span>Team</span></dt>
+          <dd>
+            @if (teamInSeason()!.team) {
+              <div>
+                <a [routerLink]="['/team-suit-nba', teamInSeason()!.team?.id, 'view']">{{ teamInSeason()!.team?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span>Season</span></dt>
+          <dd>
+            @if (teamInSeason()!.season) {
+              <div>
+                <a [routerLink]="['/season-suit-nba', teamInSeason()!.season?.id, 'view']">{{ teamInSeason()!.season?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/team-in-season-suit-nba', teamInSeason()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

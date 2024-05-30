@@ -1,0 +1,55 @@
+
+entity Season {
+	seasonName String
+}
+
+entity Team {
+	teamName String
+}
+
+entity Player {
+    name String
+}
+
+entity TeamInSeason {
+}
+
+entity TeamInGame {
+}
+
+entity Game {
+}
+
+entity PlayerInGame {
+    points Integer
+    rebounds Integer
+    assists Integer
+    steals Integer
+    blocks Integer
+    fouls Integer
+    turnovers Integer
+    played Float
+}
+
+relationship OneToMany {
+	Team to TeamInSeason{team}
+    Season to TeamInSeason{season}
+    Season to Game{season}
+	TeamInSeason to TeamInGame{team}
+    TeamInGame to PlayerInGame{team}
+	Player to PlayerInGame{player}
+    Game to PlayerInGame{game}
+    Game to TeamInGame{game}
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+angularSuffix * with suitNBA

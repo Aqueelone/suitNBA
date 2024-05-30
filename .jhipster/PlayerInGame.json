@@ -1,0 +1,65 @@
+{
+  "angularJSSuffix": "suitNBA",
+  "annotations": {
+    "changelogDate": "20240530132832"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "points",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "rebounds",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "assists",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "steals",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "blocks",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "fouls",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "turnovers",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "played",
+      "fieldType": "Float"
+    }
+  ],
+  "name": "PlayerInGame",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "teamInGame",
+      "relationshipName": "team",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "player",
+      "relationshipName": "player",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "game",
+      "relationshipName": "game",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

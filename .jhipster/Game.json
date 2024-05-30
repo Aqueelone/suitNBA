@@ -1,0 +1,34 @@
+{
+  "angularJSSuffix": "suitNBA",
+  "annotations": {
+    "changelogDate": "20240530132830"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [],
+  "name": "Game",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "playerInGame",
+      "otherEntityRelationshipName": "game",
+      "relationshipName": "playerInGame",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "teamInGame",
+      "otherEntityRelationshipName": "game",
+      "relationshipName": "teamInGame",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "season",
+      "relationshipName": "season",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}
