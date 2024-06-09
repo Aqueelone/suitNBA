@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (playerInTeam()) {
+      <div>
+        <h2 data-cy="playerInTeamDetailsHeading"><span>Player In Team</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ playerInTeam()!.id }}</span>
+          </dd>
+          <dt><span>Player</span></dt>
+          <dd>
+            @if (playerInTeam()!.player) {
+              <div>
+                <a [routerLink]="['/player-suit-nba', playerInTeam()!.player?.id, 'view']">{{ playerInTeam()!.player?.name }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span>Team In Season</span></dt>
+          <dd>
+            @if (playerInTeam()!.teamInSeason) {
+              <div>
+                <a [routerLink]="['/team-in-season-suit-nba', playerInTeam()!.teamInSeason?.id, 'view']">
+                  @for (teamInSeasonItem of teamInSeasonsSharedCollection; track teamInSeasonItem.id) {
+                    @if (teamInSeasonItem.id == playerInTeam()!.teamInSeason?.id) {
+                      <span>{{ teamInSeasonItem?.team?.teamName }}</span>
+                      |
+                      <span>{{ teamInSeasonItem?.season?.seasonName }}</span>
+                    }
+                  }
+                </a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/player-in-team', playerInTeam()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

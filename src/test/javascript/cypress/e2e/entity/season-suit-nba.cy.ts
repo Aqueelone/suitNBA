@@ -15,7 +15,7 @@ describe('Season e2e test', () => {
   const seasonPageUrlPattern = new RegExp('/season-suit-nba(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const seasonSample = { seasonName: 'moustache meh' };
+  const seasonSample = { seasonName: 'stunning yuck mmm' };
 
   let season;
 
@@ -160,8 +160,8 @@ describe('Season e2e test', () => {
     });
 
     it('should create an instance of Season', () => {
-      cy.get(`[data-cy="seasonName"]`).type('even');
-      cy.get(`[data-cy="seasonName"]`).should('have.value', 'even');
+      cy.get(`[data-cy="seasonName"]`).type('astride');
+      cy.get(`[data-cy="seasonName"]`).should('have.value', 'astride');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

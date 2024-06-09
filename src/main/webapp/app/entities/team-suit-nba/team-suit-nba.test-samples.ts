@@ -1,17 +1,16 @@
 import { ITeamSuitNba, NewTeamSuitNba } from './team-suit-nba.model';
 
 export const sampleWithRequiredData: ITeamSuitNba = {
-  id: 6044,
+  id: 26451,
 };
 
 export const sampleWithPartialData: ITeamSuitNba = {
-  id: 2400,
-  teamName: 'minus authorized',
+  id: 1381,
 };
 
 export const sampleWithFullData: ITeamSuitNba = {
-  id: 11899,
-  teamName: 'across undress where',
+  id: 18277,
+  teamName: 'procure concede',
 };
 
 export const sampleWithNewData: NewTeamSuitNba = {

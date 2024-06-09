@@ -1,0 +1,30 @@
+{
+  "annotations": {
+    "changelogDate": "20240606091940"
+  },
+  "dto": "mapstruct",
+  "fields": [],
+  "jpaMetamodelFiltering": false,
+  "name": "PlayerInTeam",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "player",
+      "otherEntityRelationshipName": "playerInTeam",
+      "relationshipName": "player",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "teamInSeason",
+      "otherEntityRelationshipName": "playerInTeam",
+      "relationshipName": "teamInSeason",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

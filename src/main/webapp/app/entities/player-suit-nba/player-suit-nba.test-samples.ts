@@ -1,17 +1,16 @@
 import { IPlayerSuitNba, NewPlayerSuitNba } from './player-suit-nba.model';
 
 export const sampleWithRequiredData: IPlayerSuitNba = {
-  id: 4867,
+  id: 15438,
 };
 
 export const sampleWithPartialData: IPlayerSuitNba = {
-  id: 3370,
-  name: 'an',
+  id: 17146,
 };
 
 export const sampleWithFullData: IPlayerSuitNba = {
-  id: 10703,
-  name: 'hmph meanwhile wherever',
+  id: 11999,
+  name: 'whereas faithfully sometimes',
 };
 
 export const sampleWithNewData: NewPlayerSuitNba = {

@@ -49,10 +49,10 @@ describe('GameSuitNba Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call SeasonSuitNba query and add missing value', () => {
       const game: IGameSuitNba = { id: 456 };
-      const season: ISeasonSuitNba = { id: 18884 };
+      const season: ISeasonSuitNba = { id: 7330 };
       game.season = season;
 
-      const seasonCollection: ISeasonSuitNba[] = [{ id: 22307 }];
+      const seasonCollection: ISeasonSuitNba[] = [{ id: 29068 }];
       jest.spyOn(seasonService, 'query').mockReturnValue(of(new HttpResponse({ body: seasonCollection })));
       const additionalSeasonSuitNbas = [season];
       const expectedCollection: ISeasonSuitNba[] = [...additionalSeasonSuitNbas, ...seasonCollection];
@@ -71,7 +71,7 @@ describe('GameSuitNba Management Update Component', () => {
 
     it('Should update editForm', () => {
       const game: IGameSuitNba = { id: 456 };
-      const season: ISeasonSuitNba = { id: 14913 };
+      const season: ISeasonSuitNba = { id: 31253 };
       game.season = season;
 
       activatedRoute.data = of({ game });

@@ -1,6 +1,7 @@
 package org.forsstudio.nbatestsuit.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.forsstudio.nbatestsuit.domain.PlayerInTeamTestSamples.*;
 import static org.forsstudio.nbatestsuit.domain.SeasonTestSamples.*;
 import static org.forsstudio.nbatestsuit.domain.TeamInGameTestSamples.*;
 import static org.forsstudio.nbatestsuit.domain.TeamInSeasonTestSamples.*;
@@ -71,5 +72,27 @@ class TeamInSeasonTest {
 
         teamInSeason.season(null);
         assertThat(teamInSeason.getSeason()).isNull();
+    }
+
+    @Test
+    void playerInTeamTest() throws Exception {
+        TeamInSeason teamInSeason = getTeamInSeasonRandomSampleGenerator();
+        PlayerInTeam playerInTeamBack = getPlayerInTeamRandomSampleGenerator();
+
+        teamInSeason.addPlayerInTeam(playerInTeamBack);
+        assertThat(teamInSeason.getPlayerInTeams()).containsOnly(playerInTeamBack);
+        assertThat(playerInTeamBack.getTeamInSeason()).isEqualTo(teamInSeason);
+
+        teamInSeason.removePlayerInTeam(playerInTeamBack);
+        assertThat(teamInSeason.getPlayerInTeams()).doesNotContain(playerInTeamBack);
+        assertThat(playerInTeamBack.getTeamInSeason()).isNull();
+
+        teamInSeason.playerInTeams(new HashSet<>(Set.of(playerInTeamBack)));
+        assertThat(teamInSeason.getPlayerInTeams()).containsOnly(playerInTeamBack);
+        assertThat(playerInTeamBack.getTeamInSeason()).isEqualTo(teamInSeason);
+
+        teamInSeason.setPlayerInTeams(new HashSet<>());
+        assertThat(teamInSeason.getPlayerInTeams()).doesNotContain(playerInTeamBack);
+        assertThat(playerInTeamBack.getTeamInSeason()).isNull();
     }
 }

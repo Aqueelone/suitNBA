@@ -18,7 +18,7 @@
           <select class="form-control" id="field_team" data-cy="team" name="team" formControlName="team" [compareWith]="compareTeamSuitNba">
             <option [ngValue]="null"></option>
             @for (teamOption of teamsSharedCollection; track $index) {
-              <option [ngValue]="teamOption">{{ teamOption.id }}</option>
+              <option [ngValue]="teamOption">{{ teamOption.teamName }}</option>
             }
           </select>
         </div>
@@ -35,7 +35,7 @@
           >
             <option [ngValue]="null"></option>
             @for (seasonOption of seasonsSharedCollection; track $index) {
-              <option [ngValue]="seasonOption">{{ seasonOption.id }}</option>
+              <option [ngValue]="seasonOption">{{ seasonOption.seasonName }}</option>
             }
           </select>
         </div>

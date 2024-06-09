@@ -1,0 +1,138 @@
+<div>
+  <h2 id="page-heading" data-cy="PlayerInTeamHeading">
+    <span>Player In Teams</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-player-in-team"
+        [routerLink]="['/player-in-team/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down">Create a new Player In Team</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+    <div class="col-sm-12">
+      <div class="input-group w-100 mt-3">
+        <label class="visually-hidden" for="currentSearch">Search for Player In Team</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentSearch"
+          id="currentSearch"
+          name="currentSearch"
+          placeholder="Search for Player In Team"
+        />
+
+        <button class="btn btn-info" (click)="search(currentSearch)">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+
+        @if (currentSearch) {
+          <button class="btn btn-danger" (click)="search('')">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </form>
+
+  @if (playerInTeams?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span>No Player In Teams found</span>
+    </div>
+  }
+
+  @if (playerInTeams && playerInTeams.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span>ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="player.id">
+              <div class="d-flex">
+                <span>Player</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="teamInSeason.id">
+              <div class="d-flex">
+                <span>Team In Season</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody infinite-scroll (scrolled)="loadNextPage()" [infiniteScrollDisabled]="!hasMorePage()" [infiniteScrollDistance]="0">
+          @for (playerInTeam of playerInTeams; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/player-in-team', playerInTeam.id, 'view']">{{ playerInTeam.id }}</a>
+              </td>
+              <td>
+                @if (playerInTeam.player) {
+                  <div>
+                    <a [routerLink]="['/player-suit-nba', playerInTeam.player.id, 'view']">{{ playerInTeam.player.name }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (playerInTeam.teamInSeason) {
+                  <div>
+                    <a [routerLink]="['/team-in-season-suit-nba', playerInTeam.teamInSeason.id, 'view']">
+                      @for (teamInSeasonItem of teamInSeasonsSharedCollection; track teamInSeasonItem.id) {
+                        @if (teamInSeasonItem.id == playerInTeam.teamInSeason.id) {
+                          <span>{{ teamInSeasonItem?.team?.teamName }}</span>
+                          |
+                          <span>{{ teamInSeasonItem?.season?.seasonName }}</span>
+                        }
+                      }
+                    </a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/player-in-team', playerInTeam.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline">View</span>
+                  </a>
+
+                  <a [routerLink]="['/player-in-team', playerInTeam.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(playerInTeam)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

@@ -15,7 +15,7 @@ describe('Team e2e test', () => {
   const teamPageUrlPattern = new RegExp('/team-suit-nba(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const teamSample = { teamName: 'who or drat' };
+  const teamSample = { teamName: 'potable that' };
 
   let team;
 
@@ -160,8 +160,8 @@ describe('Team e2e test', () => {
     });
 
     it('should create an instance of Team', () => {
-      cy.get(`[data-cy="teamName"]`).type('aw vaguely smelting');
-      cy.get(`[data-cy="teamName"]`).should('have.value', 'aw vaguely smelting');
+      cy.get(`[data-cy="teamName"]`).type('aside in per');
+      cy.get(`[data-cy="teamName"]`).should('have.value', 'aside in per');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

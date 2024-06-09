@@ -53,10 +53,10 @@ describe('TeamInSeasonSuitNba Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call TeamSuitNba query and add missing value', () => {
       const teamInSeason: ITeamInSeasonSuitNba = { id: 456 };
-      const team: ITeamSuitNba = { id: 25853 };
+      const team: ITeamSuitNba = { id: 20456 };
       teamInSeason.team = team;
 
-      const teamCollection: ITeamSuitNba[] = [{ id: 22964 }];
+      const teamCollection: ITeamSuitNba[] = [{ id: 20213 }];
       jest.spyOn(teamService, 'query').mockReturnValue(of(new HttpResponse({ body: teamCollection })));
       const additionalTeamSuitNbas = [team];
       const expectedCollection: ITeamSuitNba[] = [...additionalTeamSuitNbas, ...teamCollection];
@@ -75,10 +75,10 @@ describe('TeamInSeasonSuitNba Management Update Component', () => {
 
     it('Should call SeasonSuitNba query and add missing value', () => {
       const teamInSeason: ITeamInSeasonSuitNba = { id: 456 };
-      const season: ISeasonSuitNba = { id: 6798 };
+      const season: ISeasonSuitNba = { id: 21055 };
       teamInSeason.season = season;
 
-      const seasonCollection: ISeasonSuitNba[] = [{ id: 29700 }];
+      const seasonCollection: ISeasonSuitNba[] = [{ id: 16449 }];
       jest.spyOn(seasonService, 'query').mockReturnValue(of(new HttpResponse({ body: seasonCollection })));
       const additionalSeasonSuitNbas = [season];
       const expectedCollection: ISeasonSuitNba[] = [...additionalSeasonSuitNbas, ...seasonCollection];
@@ -97,9 +97,9 @@ describe('TeamInSeasonSuitNba Management Update Component', () => {
 
     it('Should update editForm', () => {
       const teamInSeason: ITeamInSeasonSuitNba = { id: 456 };
-      const team: ITeamSuitNba = { id: 13750 };
+      const team: ITeamSuitNba = { id: 10492 };
       teamInSeason.team = team;
-      const season: ISeasonSuitNba = { id: 22583 };
+      const season: ISeasonSuitNba = { id: 51 };
       teamInSeason.season = season;
 
       activatedRoute.data = of({ teamInSeason });

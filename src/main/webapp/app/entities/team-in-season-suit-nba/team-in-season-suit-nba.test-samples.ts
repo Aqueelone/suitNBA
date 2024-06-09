@@ -1,15 +1,15 @@
 import { ITeamInSeasonSuitNba, NewTeamInSeasonSuitNba } from './team-in-season-suit-nba.model';
 
 export const sampleWithRequiredData: ITeamInSeasonSuitNba = {
-  id: 3744,
+  id: 11006,
 };
 
 export const sampleWithPartialData: ITeamInSeasonSuitNba = {
-  id: 29900,
+  id: 4917,
 };
 
 export const sampleWithFullData: ITeamInSeasonSuitNba = {
-  id: 26840,
+  id: 16070,
 };
 
 export const sampleWithNewData: NewTeamInSeasonSuitNba = {

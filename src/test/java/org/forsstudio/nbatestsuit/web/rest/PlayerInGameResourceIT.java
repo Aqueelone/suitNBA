@@ -436,7 +436,12 @@ class PlayerInGameResourceIT {
         PlayerInGame partialUpdatedPlayerInGame = new PlayerInGame();
         partialUpdatedPlayerInGame.setId(playerInGame.getId());
 
-        partialUpdatedPlayerInGame.points(UPDATED_POINTS).fouls(UPDATED_FOULS).played(UPDATED_PLAYED);
+        partialUpdatedPlayerInGame
+            .assists(UPDATED_ASSISTS)
+            .blocks(UPDATED_BLOCKS)
+            .fouls(UPDATED_FOULS)
+            .turnovers(UPDATED_TURNOVERS)
+            .played(UPDATED_PLAYED);
 
         webTestClient
             .patch()

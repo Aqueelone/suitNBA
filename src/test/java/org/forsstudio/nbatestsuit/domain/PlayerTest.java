@@ -2,6 +2,7 @@ package org.forsstudio.nbatestsuit.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.forsstudio.nbatestsuit.domain.PlayerInGameTestSamples.*;
+import static org.forsstudio.nbatestsuit.domain.PlayerInTeamTestSamples.*;
 import static org.forsstudio.nbatestsuit.domain.PlayerTestSamples.*;
 
 import java.util.HashSet;
@@ -45,5 +46,27 @@ class PlayerTest {
         player.setPlayerInGames(new HashSet<>());
         assertThat(player.getPlayerInGames()).doesNotContain(playerInGameBack);
         assertThat(playerInGameBack.getPlayer()).isNull();
+    }
+
+    @Test
+    void playerInTeamTest() throws Exception {
+        Player player = getPlayerRandomSampleGenerator();
+        PlayerInTeam playerInTeamBack = getPlayerInTeamRandomSampleGenerator();
+
+        player.addPlayerInTeam(playerInTeamBack);
+        assertThat(player.getPlayerInTeams()).containsOnly(playerInTeamBack);
+        assertThat(playerInTeamBack.getPlayer()).isEqualTo(player);
+
+        player.removePlayerInTeam(playerInTeamBack);
+        assertThat(player.getPlayerInTeams()).doesNotContain(playerInTeamBack);
+        assertThat(playerInTeamBack.getPlayer()).isNull();
+
+        player.playerInTeams(new HashSet<>(Set.of(playerInTeamBack)));
+        assertThat(player.getPlayerInTeams()).containsOnly(playerInTeamBack);
+        assertThat(playerInTeamBack.getPlayer()).isEqualTo(player);
+
+        player.setPlayerInTeams(new HashSet<>());
+        assertThat(player.getPlayerInTeams()).doesNotContain(playerInTeamBack);
+        assertThat(playerInTeamBack.getPlayer()).isNull();
     }
 }

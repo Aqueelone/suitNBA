@@ -57,7 +57,7 @@ public class PlayerInGame implements Serializable {
     private TeamInGame team;
 
     @Transient
-    @JsonIgnoreProperties(value = { "playerInGames" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "playerInGames", "playerInTeams" }, allowSetters = true)
     private Player player;
 
     @Transient

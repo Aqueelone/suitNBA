@@ -581,6 +581,11 @@
                                 <artifactId>jaxb-runtime</artifactId>
                             </path>
                         </annotationProcessorPaths>
+                        <compilerArgs>
+                            <compilerArg>
+                                -Amapstruct.unmappedTargetPolicy=IGNORE
+                            </compilerArg>
+                        </compilerArgs>
                     </configuration>
                 </plugin>
                 <plugin>

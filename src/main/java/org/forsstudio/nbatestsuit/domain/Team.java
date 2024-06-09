@@ -28,7 +28,7 @@ public class Team implements Serializable {
     private String teamName;
 
     @Transient
-    @JsonIgnoreProperties(value = { "teamInGames", "team", "season" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "teamInGames", "team", "season", "playerInTeams" }, allowSetters = true)
     private Set<TeamInSeason> teamInSeasons = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

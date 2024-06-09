@@ -57,10 +57,10 @@ describe('PlayerInGameSuitNba Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call TeamInGameSuitNba query and add missing value', () => {
       const playerInGame: IPlayerInGameSuitNba = { id: 456 };
-      const team: ITeamInGameSuitNba = { id: 29662 };
+      const team: ITeamInGameSuitNba = { id: 18252 };
       playerInGame.team = team;
 
-      const teamInGameCollection: ITeamInGameSuitNba[] = [{ id: 27004 }];
+      const teamInGameCollection: ITeamInGameSuitNba[] = [{ id: 9161 }];
       jest.spyOn(teamInGameService, 'query').mockReturnValue(of(new HttpResponse({ body: teamInGameCollection })));
       const additionalTeamInGameSuitNbas = [team];
       const expectedCollection: ITeamInGameSuitNba[] = [...additionalTeamInGameSuitNbas, ...teamInGameCollection];
@@ -79,10 +79,10 @@ describe('PlayerInGameSuitNba Management Update Component', () => {
 
     it('Should call PlayerSuitNba query and add missing value', () => {
       const playerInGame: IPlayerInGameSuitNba = { id: 456 };
-      const player: IPlayerSuitNba = { id: 809 };
+      const player: IPlayerSuitNba = { id: 4777 };
       playerInGame.player = player;
 
-      const playerCollection: IPlayerSuitNba[] = [{ id: 1998 }];
+      const playerCollection: IPlayerSuitNba[] = [{ id: 7249 }];
       jest.spyOn(playerService, 'query').mockReturnValue(of(new HttpResponse({ body: playerCollection })));
       const additionalPlayerSuitNbas = [player];
       const expectedCollection: IPlayerSuitNba[] = [...additionalPlayerSuitNbas, ...playerCollection];
@@ -101,10 +101,10 @@ describe('PlayerInGameSuitNba Management Update Component', () => {
 
     it('Should call GameSuitNba query and add missing value', () => {
       const playerInGame: IPlayerInGameSuitNba = { id: 456 };
-      const game: IGameSuitNba = { id: 10015 };
+      const game: IGameSuitNba = { id: 10044 };
       playerInGame.game = game;
 
-      const gameCollection: IGameSuitNba[] = [{ id: 29154 }];
+      const gameCollection: IGameSuitNba[] = [{ id: 26666 }];
       jest.spyOn(gameService, 'query').mockReturnValue(of(new HttpResponse({ body: gameCollection })));
       const additionalGameSuitNbas = [game];
       const expectedCollection: IGameSuitNba[] = [...additionalGameSuitNbas, ...gameCollection];
@@ -123,11 +123,11 @@ describe('PlayerInGameSuitNba Management Update Component', () => {
 
     it('Should update editForm', () => {
       const playerInGame: IPlayerInGameSuitNba = { id: 456 };
-      const team: ITeamInGameSuitNba = { id: 12948 };
+      const team: ITeamInGameSuitNba = { id: 297 };
       playerInGame.team = team;
-      const player: IPlayerSuitNba = { id: 4392 };
+      const player: IPlayerSuitNba = { id: 9645 };
       playerInGame.player = player;
-      const game: IGameSuitNba = { id: 5049 };
+      const game: IGameSuitNba = { id: 9278 };
       playerInGame.game = game;
 
       activatedRoute.data = of({ playerInGame });

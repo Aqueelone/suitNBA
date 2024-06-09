@@ -1,15 +1,15 @@
 import { IGameSuitNba, NewGameSuitNba } from './game-suit-nba.model';
 
 export const sampleWithRequiredData: IGameSuitNba = {
-  id: 13194,
+  id: 18975,
 };
 
 export const sampleWithPartialData: IGameSuitNba = {
-  id: 13692,
+  id: 51,
 };
 
 export const sampleWithFullData: IGameSuitNba = {
-  id: 6645,
+  id: 24635,
 };
 
 export const sampleWithNewData: NewGameSuitNba = {

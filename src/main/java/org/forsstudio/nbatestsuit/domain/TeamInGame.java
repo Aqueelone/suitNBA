@@ -28,7 +28,7 @@ public class TeamInGame implements Serializable {
     private Set<PlayerInGame> playerInGames = new HashSet<>();
 
     @Transient
-    @JsonIgnoreProperties(value = { "teamInGames", "team", "season" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "teamInGames", "team", "season", "playerInTeams" }, allowSetters = true)
     private TeamInSeason team;
 
     @Transient

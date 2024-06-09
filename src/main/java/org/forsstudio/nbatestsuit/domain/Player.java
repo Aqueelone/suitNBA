@@ -31,6 +31,10 @@ public class Player implements Serializable {
     @JsonIgnoreProperties(value = { "team", "player", "game" }, allowSetters = true)
     private Set<PlayerInGame> playerInGames = new HashSet<>();
 
+    @Transient
+    @JsonIgnoreProperties(value = { "player", "teamInSeason" }, allowSetters = true)
+    private Set<PlayerInTeam> playerInTeams = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -87,6 +91,37 @@ public class Player implements Serializable {
     public Player removePlayerInGame(PlayerInGame playerInGame) {
         this.playerInGames.remove(playerInGame);
         playerInGame.setPlayer(null);
+        return this;
+    }
+
+    public Set<PlayerInTeam> getPlayerInTeams() {
+        return this.playerInTeams;
+    }
+
+    public void setPlayerInTeams(Set<PlayerInTeam> playerInTeams) {
+        if (this.playerInTeams != null) {
+            this.playerInTeams.forEach(i -> i.setPlayer(null));
+        }
+        if (playerInTeams != null) {
+            playerInTeams.forEach(i -> i.setPlayer(this));
+        }
+        this.playerInTeams = playerInTeams;
+    }
+
+    public Player playerInTeams(Set<PlayerInTeam> playerInTeams) {
+        this.setPlayerInTeams(playerInTeams);
+        return this;
+    }
+
+    public Player addPlayerInTeam(PlayerInTeam playerInTeam) {
+        this.playerInTeams.add(playerInTeam);
+        playerInTeam.setPlayer(this);
+        return this;
+    }
+
+    public Player removePlayerInTeam(PlayerInTeam playerInTeam) {
+        this.playerInTeams.remove(playerInTeam);
+        playerInTeam.setPlayer(null);
         return this;
     }
 

@@ -20,10 +20,12 @@ public interface TeamInSeasonMapper extends EntityMapper<TeamInSeasonDTO, TeamIn
     @Named("teamId")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
+    @Mapping(target = "teamName", source = "teamName")
     TeamDTO toDtoTeamId(Team team);
 
     @Named("seasonId")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
+    @Mapping(target = "seasonName", source = "seasonName")
     SeasonDTO toDtoSeasonId(Season season);
 }

@@ -3,8 +3,8 @@ import { ISeasonSuitNba } from 'app/entities/season-suit-nba/season-suit-nba.mod
 
 export interface ITeamInSeasonSuitNba {
   id: number;
-  team?: Pick<ITeamSuitNba, 'id'> | null;
-  season?: Pick<ISeasonSuitNba, 'id'> | null;
+  team?: ITeamSuitNba | null;
+  season?: ISeasonSuitNba | null;
 }
 
 export type NewTeamInSeasonSuitNba = Omit<ITeamInSeasonSuitNba, 'id'> & { id: null };

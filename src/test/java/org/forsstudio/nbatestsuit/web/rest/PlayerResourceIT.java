@@ -361,8 +361,6 @@ class PlayerResourceIT {
         Player partialUpdatedPlayer = new Player();
         partialUpdatedPlayer.setId(player.getId());
 
-        partialUpdatedPlayer.name(UPDATED_NAME);
-
         webTestClient
             .patch()
             .uri(ENTITY_API_URL_ID, partialUpdatedPlayer.getId())

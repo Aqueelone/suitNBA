@@ -41,6 +41,11 @@ const routes: Routes = [
     data: { pageTitle: 'TeamInSeasons' },
     loadChildren: () => import('./team-in-season-suit-nba/team-in-season-suit-nba.routes'),
   },
+  {
+    path: 'player-in-team',
+    data: { pageTitle: 'PlayerInTeams' },
+    loadChildren: () => import('./player-in-team/player-in-team.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

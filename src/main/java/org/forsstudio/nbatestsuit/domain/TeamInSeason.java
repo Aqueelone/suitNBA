@@ -28,12 +28,16 @@ public class TeamInSeason implements Serializable {
     private Set<TeamInGame> teamInGames = new HashSet<>();
 
     @Transient
-    @JsonIgnoreProperties(value = { "teamInSeasons" }, allowSetters = true)
+    //@JsonIgnoreProperties(value = { "teamInSeasons" }, allowSetters = true)
     private Team team;
 
     @Transient
-    @JsonIgnoreProperties(value = { "teamInSeasons", "games" }, allowSetters = true)
+    //@JsonIgnoreProperties(value = { "teamInSeasons", "games" }, allowSetters = true)
     private Season season;
+
+    @Transient
+    //@JsonIgnoreProperties(value = { "player", "teamInSeason" }, allowSetters = true)
+    private Set<PlayerInTeam> playerInTeams = new HashSet<>();
 
     @Column("team_id")
     private Long teamId;
@@ -112,6 +116,37 @@ public class TeamInSeason implements Serializable {
 
     public TeamInSeason season(Season season) {
         this.setSeason(season);
+        return this;
+    }
+
+    public Set<PlayerInTeam> getPlayerInTeams() {
+        return this.playerInTeams;
+    }
+
+    public void setPlayerInTeams(Set<PlayerInTeam> playerInTeams) {
+        if (this.playerInTeams != null) {
+            this.playerInTeams.forEach(i -> i.setTeamInSeason(null));
+        }
+        if (playerInTeams != null) {
+            playerInTeams.forEach(i -> i.setTeamInSeason(this));
+        }
+        this.playerInTeams = playerInTeams;
+    }
+
+    public TeamInSeason playerInTeams(Set<PlayerInTeam> playerInTeams) {
+        this.setPlayerInTeams(playerInTeams);
+        return this;
+    }
+
+    public TeamInSeason addPlayerInTeam(PlayerInTeam playerInTeam) {
+        this.playerInTeams.add(playerInTeam);
+        playerInTeam.setTeamInSeason(this);
+        return this;
+    }
+
+    public TeamInSeason removePlayerInTeam(PlayerInTeam playerInTeam) {
+        this.playerInTeams.remove(playerInTeam);
+        playerInTeam.setTeamInSeason(null);
         return this;
     }
 

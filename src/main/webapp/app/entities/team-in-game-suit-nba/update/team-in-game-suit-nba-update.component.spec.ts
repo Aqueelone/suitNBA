@@ -53,10 +53,10 @@ describe('TeamInGameSuitNba Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call TeamInSeasonSuitNba query and add missing value', () => {
       const teamInGame: ITeamInGameSuitNba = { id: 456 };
-      const team: ITeamInSeasonSuitNba = { id: 9352 };
+      const team: ITeamInSeasonSuitNba = { id: 25654 };
       teamInGame.team = team;
 
-      const teamInSeasonCollection: ITeamInSeasonSuitNba[] = [{ id: 15239 }];
+      const teamInSeasonCollection: ITeamInSeasonSuitNba[] = [{ id: 12004 }];
       jest.spyOn(teamInSeasonService, 'query').mockReturnValue(of(new HttpResponse({ body: teamInSeasonCollection })));
       const additionalTeamInSeasonSuitNbas = [team];
       const expectedCollection: ITeamInSeasonSuitNba[] = [...additionalTeamInSeasonSuitNbas, ...teamInSeasonCollection];
@@ -75,10 +75,10 @@ describe('TeamInGameSuitNba Management Update Component', () => {
 
     it('Should call GameSuitNba query and add missing value', () => {
       const teamInGame: ITeamInGameSuitNba = { id: 456 };
-      const game: IGameSuitNba = { id: 26995 };
+      const game: IGameSuitNba = { id: 4092 };
       teamInGame.game = game;
 
-      const gameCollection: IGameSuitNba[] = [{ id: 24321 }];
+      const gameCollection: IGameSuitNba[] = [{ id: 25585 }];
       jest.spyOn(gameService, 'query').mockReturnValue(of(new HttpResponse({ body: gameCollection })));
       const additionalGameSuitNbas = [game];
       const expectedCollection: IGameSuitNba[] = [...additionalGameSuitNbas, ...gameCollection];
@@ -97,9 +97,9 @@ describe('TeamInGameSuitNba Management Update Component', () => {
 
     it('Should update editForm', () => {
       const teamInGame: ITeamInGameSuitNba = { id: 456 };
-      const team: ITeamInSeasonSuitNba = { id: 19520 };
+      const team: ITeamInSeasonSuitNba = { id: 32482 };
       teamInGame.team = team;
-      const game: IGameSuitNba = { id: 7157 };
+      const game: IGameSuitNba = { id: 22854 };
       teamInGame.game = game;
 
       activatedRoute.data = of({ teamInGame });

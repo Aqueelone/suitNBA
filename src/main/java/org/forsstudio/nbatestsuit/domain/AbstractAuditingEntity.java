@@ -2,6 +2,7 @@ package org.forsstudio.nbatestsuit.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 import org.springframework.data.annotation.CreatedDate;
@@ -12,8 +13,9 @@ import org.springframework.data.annotation.LastModifiedDate;
  * last modified by attributes.
  */
 @JsonIgnoreProperties(value = { "createdBy", "createdDate", "lastModifiedBy", "lastModifiedDate" }, allowGetters = true)
-public abstract class AbstractAuditingEntity<T> implements Serializable {
+public abstract class AbstractAuditingEntity<T> extends AbstractEntity<T> implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     public abstract T getId();

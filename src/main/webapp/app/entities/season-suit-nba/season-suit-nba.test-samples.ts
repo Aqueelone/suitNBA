@@ -1,16 +1,17 @@
 import { ISeasonSuitNba, NewSeasonSuitNba } from './season-suit-nba.model';
 
 export const sampleWithRequiredData: ISeasonSuitNba = {
-  id: 12644,
+  id: 20701,
 };
 
 export const sampleWithPartialData: ISeasonSuitNba = {
-  id: 8118,
+  id: 26002,
+  seasonName: 'clothes hm before',
 };
 
 export const sampleWithFullData: ISeasonSuitNba = {
-  id: 31334,
-  seasonName: 'broadly boohoo while',
+  id: 6489,
+  seasonName: 'gosh badly rue',
 };
 
 export const sampleWithNewData: NewSeasonSuitNba = {

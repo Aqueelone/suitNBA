@@ -15,7 +15,7 @@ describe('PlayerInGame e2e test', () => {
   const playerInGamePageUrlPattern = new RegExp('/player-in-game-suit-nba(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const playerInGameSample = { points: 10008 };
+  const playerInGameSample = { points: 16502 };
 
   let playerInGame;
 
@@ -160,29 +160,29 @@ describe('PlayerInGame e2e test', () => {
     });
 
     it('should create an instance of PlayerInGame', () => {
-      cy.get(`[data-cy="points"]`).type('15344');
-      cy.get(`[data-cy="points"]`).should('have.value', '15344');
+      cy.get(`[data-cy="points"]`).type('28093');
+      cy.get(`[data-cy="points"]`).should('have.value', '28093');
 
-      cy.get(`[data-cy="rebounds"]`).type('11203');
-      cy.get(`[data-cy="rebounds"]`).should('have.value', '11203');
+      cy.get(`[data-cy="rebounds"]`).type('6182');
+      cy.get(`[data-cy="rebounds"]`).should('have.value', '6182');
 
-      cy.get(`[data-cy="assists"]`).type('11978');
-      cy.get(`[data-cy="assists"]`).should('have.value', '11978');
+      cy.get(`[data-cy="assists"]`).type('16976');
+      cy.get(`[data-cy="assists"]`).should('have.value', '16976');
 
-      cy.get(`[data-cy="steals"]`).type('17982');
-      cy.get(`[data-cy="steals"]`).should('have.value', '17982');
+      cy.get(`[data-cy="steals"]`).type('3074');
+      cy.get(`[data-cy="steals"]`).should('have.value', '3074');
 
-      cy.get(`[data-cy="blocks"]`).type('7391');
-      cy.get(`[data-cy="blocks"]`).should('have.value', '7391');
+      cy.get(`[data-cy="blocks"]`).type('1882');
+      cy.get(`[data-cy="blocks"]`).should('have.value', '1882');
 
-      cy.get(`[data-cy="fouls"]`).type('30425');
-      cy.get(`[data-cy="fouls"]`).should('have.value', '30425');
+      cy.get(`[data-cy="fouls"]`).type('30778');
+      cy.get(`[data-cy="fouls"]`).should('have.value', '30778');
 
-      cy.get(`[data-cy="turnovers"]`).type('20490');
-      cy.get(`[data-cy="turnovers"]`).should('have.value', '20490');
+      cy.get(`[data-cy="turnovers"]`).type('29286');
+      cy.get(`[data-cy="turnovers"]`).should('have.value', '29286');
 
-      cy.get(`[data-cy="played"]`).type('1578.3');
-      cy.get(`[data-cy="played"]`).should('have.value', '1578.3');
+      cy.get(`[data-cy="played"]`).type('20923.71');
+      cy.get(`[data-cy="played"]`).should('have.value', '20923.71');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

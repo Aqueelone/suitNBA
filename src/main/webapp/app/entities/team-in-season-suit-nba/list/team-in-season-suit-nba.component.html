@@ -92,14 +92,14 @@
               <td>
                 @if (teamInSeason.team) {
                   <div>
-                    <a [routerLink]="['/team-suit-nba', teamInSeason.team.id, 'view']">{{ teamInSeason.team.id }}</a>
+                    <a [routerLink]="['/team-suit-nba', teamInSeason.team.id, 'view']">{{ teamInSeason.team.teamName }}</a>
                   </div>
                 }
               </td>
               <td>
                 @if (teamInSeason.season) {
                   <div>
-                    <a [routerLink]="['/season-suit-nba', teamInSeason.season.id, 'view']">{{ teamInSeason.season.id }}</a>
+                    <a [routerLink]="['/season-suit-nba', teamInSeason.season.id, 'view']">{{ teamInSeason.season.seasonName }}</a>
                   </div>
                 }
               </td>

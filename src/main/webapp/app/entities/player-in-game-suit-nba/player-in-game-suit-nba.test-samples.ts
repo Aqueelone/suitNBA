@@ -1,26 +1,30 @@
 import { IPlayerInGameSuitNba, NewPlayerInGameSuitNba } from './player-in-game-suit-nba.model';
 
 export const sampleWithRequiredData: IPlayerInGameSuitNba = {
-  id: 2417,
+  id: 13480,
 };
 
 export const sampleWithPartialData: IPlayerInGameSuitNba = {
-  id: 13921,
-  points: 8198,
-  rebounds: 23879,
-  blocks: 29842,
+  id: 19276,
+  points: 4183,
+  rebounds: 8397,
+  assists: 24021,
+  steals: 146,
+  blocks: 16591,
+  fouls: 4937,
+  turnovers: 10726,
 };
 
 export const sampleWithFullData: IPlayerInGameSuitNba = {
-  id: 5421,
-  points: 20136,
-  rebounds: 12953,
-  assists: 29797,
-  steals: 7839,
-  blocks: 20688,
-  fouls: 19726,
-  turnovers: 19811,
-  played: 28698.88,
+  id: 17610,
+  points: 30052,
+  rebounds: 12229,
+  assists: 11824,
+  steals: 7671,
+  blocks: 23579,
+  fouls: 24694,
+  turnovers: 10872,
+  played: 8015.08,
 };
 
 export const sampleWithNewData: NewPlayerInGameSuitNba = {
